@@ -1,78 +1,72 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { Alert, Image, Pressable, SafeAreaView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home, Map, Profil, Communauté, Qrcode } from './App/screen';
 import AntDesign from '@expo/vector-icons/AntDesign';
 import Feather from '@expo/vector-icons/Feather';
+import { Home, Map, Profil, Communauté, Qrcode } from './App/screen'; // Ensure these are correctly imported
+import LoginForm from './App/screen/login';
+
+const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
-const ScreenOptions = {
-  tabBarshowLabel: false,
-   headerShows : false,
-   tabBarstyle : {
-     position: 'absolute',
-     bottom: 0,
-     left: 0,
-     right: 0,
-     elevation: 0,
-     background: '#ffffff',
-     height: 60,
-}
+
+const tabBarOptions = {
+  showLabel: false,
+  style: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    elevation: 0,
+    backgroundColor: '#ffffff',
+    height: 60,
+  },
+};
+
+function HomeTab() {
+  return (
+    <Tab.Navigator
+      initialRouteName="Home"
+      screenOptions={({ route }) => ({
+        tabBarIcon: ({ color, size }) => {
+          let iconName;
+          if (route.name === 'Home') {
+            iconName = 'home';
+          } else if (route.name === 'Map') {
+            iconName = 'map-pin';
+            return <Feather name={iconName} size={24} color={color} />;
+          } else if (route.name === 'QrCode') {
+            iconName = 'qrcode';
+          } else if (route.name === 'Communauté') {
+            iconName = 'team';
+          } else if (route.name === 'Profil') {
+            iconName = 'user';
+          }
+          return <AntDesign name={iconName} size={24} color={color} />;
+        },
+      })}
+      tabBarOptions={tabBarOptions}
+    >
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Map" component={Map} />
+      <Tab.Screen name="QrCode" component={Qrcode} />
+      <Tab.Screen name="Communauté" component={Communauté} />
+      <Tab.Screen name="Profil" component={Profil} />
+    </Tab.Navigator>
+  );
 }
 
-export default function App() {
+function App() {
   return (
-    <NavigationContainer ScreenOptions={ScreenOptions}>
-      <Tab.Navigator>
-        <Tab.Screen 
-          name="Home" 
-          component={Home} 
-          options={{
-            tabBarIcon: ({ color, size }) => (
-              <AntDesign name="home" size={24} color="black" />
-            ),
-          }}
-        />
-        <Tab.Screen name="Map" 
-        component={Map} 
-        options={{
-          tabBarIcon: ({ color, size }) => (
-            <Feather name="map-pin" size={24} color="black" />
-          ),
-        }}
-        />
-        <Tab.Screen name="QrCode"
-         component={Qrcode}
-         options={{
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="qrcode" size={24} color="black" />
-          ),
-         }} />
-        <Tab.Screen name="Communauté"
-         component={Communauté}
-         options={{
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="team" size={24} color="black" />
-          ),
-         
-         }} />
-        <Tab.Screen name="Profil"
-         component={Profil}
-         options={{
-          tabBarIcon: ({ color, size }) => (
-            <AntDesign name="user" size={24} color="black" />
-          ),
-         }} />
-      </Tab.Navigator>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Login" component={LoginForm} />
+        <Stack.Screen name="HomeTab" component={HomeTab} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
+export { HomeTab };
