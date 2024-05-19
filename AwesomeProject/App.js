@@ -14,6 +14,9 @@ import Vaent from './App/screen/Vaent';
 import Biscuit from './App/screen/Biscuit';
 import Billetterie from './App/screen/Billetterie';
 import Infos from './App/screen/Infos';
+import QRprofil from './App/screen/QRprofil';
+import Para from './App/screen/Para';
+import Politique from './App/screen/Politique';
 
 
 
@@ -82,6 +85,9 @@ function App() {
         <Stack.Screen name='Vaent' component= {Vaent}/> 
         <Stack.Screen name='Billetterie' component= {Billetterie}/> 
         <Stack.Screen name='Infos' component= {Infos}/> 
+        <Stack.Screen name='QRprofil' component= {QRprofil}/> 
+        <Stack.Screen name='Para' component= {Para}/> 
+        <Stack.Screen name='Politique' component= {Politique}/> 
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -13,16 +13,16 @@ const Biscuit = ({navigation}) => {
         </Pressable>
       <View style={styles.header}>
         <Image source={require('../../assets/bisuit.jpg')} style={styles.image} />
-        <Text style={styles.title}>Biscuit</Text>
+        <Text style={styles.title}> Petit Biscuit</Text>
       </View>
       <View style={styles.fest}>
-        <Text style={styles.text}>21 Juin</Text>
-        <Text style={styles.text}>18h00</Text>
-        <Text style={styles.text}>Scène II</Text>
+        <Text style={styles.text}>23 Juin</Text>
+        <Text style={styles.text}>15h00</Text>
+        <Text style={styles.text}>Scène I</Text>
       </View>
       <View style={styles.desc}>
         <Text  style={styles.text}>
-        Biscuit, c’est ce DJ cool qui fait danser tout le monde avec ses sons géniaux ! Né Valentin Brunel en 1996, ce gars a commencé à jouer du piano quand il était tout petit. Mais c’est en 2016 qu’il est devenu super célèbre avec son remix de "This Girl". Depuis, il enchaîne les tubes et les soirées de folie. Avec ses mixes de house et de funk, il met l’ambiance partout où il passe. Biscuit, c’est un peu comme le héros de la fête, celui qui te donne envie de danser jusqu’au bout de la nuit !
+        Petit Biscuit, c’est ce jeune prodige de la musique électronique qui fait voyager avec ses sons envoûtants ! Né Mehdi Benjelloun en 1999, il a commencé à composer de la musique dans sa chambre dès son plus jeune âge. Mais c’est en 2015, avec son morceau "Sunset Lover", qu’il est devenu célèbre. Depuis, il enflamme les festivals et les soirées avec ses beats entraînants et ses mélodies planantes. Petit Biscuit, c’est un peu comme le magicien de la musique, celui qui te transporte dans un autre univers dès que tu écoutes ses morceaux.
         </Text>
       </View>
       {/* <Video source={{uri: 'https://www.youtube.com/watch?v=QH2a6V-W87U'}}/> */}

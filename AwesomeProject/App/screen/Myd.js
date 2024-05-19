@@ -15,11 +15,23 @@ const Myd = ({navigation}) => {
         <Image source={require('../../assets/Myd.jpg')} style={styles.image} />
         <Text style={styles.title}>Myd</Text>
       </View>
-      <View style={styles.fest}>
-        <Text style={styles.text}>21 Juin</Text>
-        <Text style={styles.text}>18h00</Text>
-        <Text style={styles.text}>Scène II</Text>
-      </View>
+      <View style={styles.festival}>
+        <View style={styles.fest}>
+          <Text style={styles.text}>21 Juin</Text>
+          <Text style={styles.text}>17h00</Text>
+          <Text style={styles.text}>Scène I</Text>
+        </View>
+        <View style={styles.fest}>
+          <Text style={styles.text}>22 Juin</Text>
+          <Text style={styles.text}>16h30</Text>
+          <Text style={styles.text}>Scène II</Text>
+        </View>
+        <View style={styles.fest}>
+          <Text style={styles.text}>23 Juin</Text>
+          <Text style={styles.text}>14h00</Text>
+          <Text style={styles.text}>Scène I</Text>
+        </View>
+      </View>    
       <View style={styles.desc}>
         <Text  style={styles.text}>
         Myd, c’est ce DJ cool qui fait danser tout le monde avec ses sons géniaux ! Né Valentin Brunel en 1996, ce gars a commencé à jouer du piano quand il était tout petit. Mais c’est en 2016 qu’il est devenu super célèbre avec son remix de "This Girl". Depuis, il enchaîne les tubes et les soirées de folie. Avec ses mixes de house et de funk, il met l’ambiance partout où il passe. Myd, c’est un peu comme le héros de la fête, celui qui te donne envie de danser jusqu’au bout de la nuit !
@@ -59,13 +71,18 @@ const styles = StyleSheet.create({
     borderWidth:2,
   },
 
+  festival: {
+    margin: 20,
+    padding: 10,
+  },
+
   fest: {
     flexDirection: 'row',
     justifyContent: 'space-around',
     flexWrap : 'wrap',
-    margin: 20,
-    padding: 10,
+    marginTop : 20,
   },
+
   title:{
     color:'white',
     fontSize : 24,
