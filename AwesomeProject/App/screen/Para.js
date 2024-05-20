@@ -1,10 +1,12 @@
 import React from 'react';
-import { View, Text, Image, StyleSheet, Pressable } from 'react-native';
+import { View, Text, Image, StyleSheet, Pressable, TouchableOpacity, Switch } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 const Para = ({navigation}) => {
-  return (
+    const [notificationsEnabled, setNotificationsEnabled] = React.useState(false);
+    return (
     <View style={styles.container}>
-        {/* <Pressable onPress={() => navigation.navigate("Billetterie")}>
+        {/* <Pressable onPress={() => navigation.navigate("Profil")}>
           <Image source={require('../../assets/fleche.png')} style={styles.fleche} />
         </Pressable> */}
       <View style={styles.profileContainer}>
@@ -16,6 +18,25 @@ const Para = ({navigation}) => {
         <Text style={styles.tab}>Avantages</Text>
         </Pressable>
         <Text style={[styles.tab, styles.activeTab]}>Paramètres</Text>
+      </View>
+
+      <View style={styles.settingsContainer}>
+        <Pressable onPress={() => navigation.navigate("Politique")} style={styles.settingItem}>
+          <Icon name="lock-closed-outline" size={24} color="#00BFC3" />
+          <Text style={styles.settingText}>Politique de confidentialité</Text>
+        </Pressable>
+        <TouchableOpacity style={styles.settingItem}>
+          <Icon name="document-outline" size={24} color="#00BFC3" />
+          <Text style={styles.settingText}>Mes données</Text>
+        </TouchableOpacity>
+        <View style={styles.settingItem}>
+          <Icon name="notifications-outline" size={24} color="#00BFC3" />
+          <Text style={styles.settingText}>Notifications</Text>
+          <Switch
+            value={notificationsEnabled}
+            onValueChange={(value) => setNotificationsEnabled(value)}
+          />
+        </View>
       </View>
     </View>
   );
@@ -39,8 +60,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#051118',
     alignItems: 'center',
     paddingTop: 70,
-    
   },
+  
   profileContainer: {
     alignItems: 'center',
   },
@@ -73,6 +94,21 @@ const styles = StyleSheet.create({
     color: '#00BFC3',
     borderBottomWidth: 2,
     borderBottomColor: '#00BFC3',
+  },
+  settingsContainer: {
+    flex: 1,
+  },
+  settingItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    margin: 20,
+    padding: 10,
+  },
+
+  settingText: {
+    color: '#FFFFFF',
+    fontSize: 18,
+    padding: 20,
   },
 });
 
