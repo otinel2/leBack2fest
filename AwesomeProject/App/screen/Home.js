@@ -1,30 +1,84 @@
 import React, {useState} from 'react';
-import { View, Text, ScrollView, StyleSheet, Image, Pressable } from 'react-native';
-import {Calendar, LocaleConfig} from 'react-native-calendars';
-
-
-
+import { View, Text, ScrollView, StyleSheet, Image, Pressable, Platform } from 'react-native';
+import { Picker } from "@react-native-picker/picker";
 
 const App = ({navigation}) => {
 
-  const daysOfWeek = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
-  const dates = [
-  [null, null, null, null, null, 1, 2], 
-  [3, 4, 5, 6, 7, 8, 9],
-  [10, 11, 12, 13, 14, 15, 16],
-  [17, 18, 19, 20, 21, 22, 23],
-  [24, 25, 26, 27, 28, 29, 30]
-];
+//   const daysOfWeek = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+//   const dates = [
+//   [null, null, null, null, null, 1, 2], 
+//   [3, 4, 5, 6, 7, 8, 9],
+//   [10, 11, 12, 13, 14, 15, 16],
+//   [17, 18, 19, 20, 21, 22, 23],
+//   [24, 25, 26, 27, 28, 29, 30]
+// ];
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView style={styles.container} contentContainerStyle={styles.scrollContainer}>
       <View style={styles.header}>
-        <Image source={require('../../assets/new_logo.png')} style={styles.radioImage} />
+        <Image source={require('../../assets/new_logo.png')} style={styles.radioImage} resizeMode='contain' />
       </View>
-      
+    
       <View style={styles.programmeContainer}>
         <Text style={styles.programmeTitle}>Programme</Text>
-        <View style={styles.calendar}>
+        <View style={styles.pickerContainer}>
+          <Picker style={styles.picker}>
+            <Picker.Item style={styles.titleItem} label="Ven.21" value="ven. 21" />
+            <Picker.Item style={styles.item} label="17h00       -       Myd  -  scène I " value="ven. 21" />
+            <Picker.Item style={styles.item} label="17h30       -       Paul Lock  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="18h00       -       Kungs  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="18h30       -       Tom Santa  -  scène II " value="ven. 21" />
+            <Picker.Item style={styles.item} label="19h00       -       Ivan Giovanni  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="19h30       -       Kas:st  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="20h00       -       Dr Peacock  -  scène I " value="ven. 21" />
+            <Picker.Item style={styles.item} label="20h30       -       Nico Moreno  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="21h00       -       Byorn  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="21h30       -       Trinix  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="22h00       -       Lauwend  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="22h30       -       Vladimir Cauchemar  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="23h00       -       Mandragora  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="23h30       -       D-Frek  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="00h00       -       Vaent  -  scène I" value="ven. 21" />
+          </Picker>
+          <Picker style={styles.picker}>
+            <Picker.Item style={styles.titleItem} label="Sam.22" value="Sam.22" />
+            <Picker.Item style={styles.item} label="17h00       -       Myd  -  scène I " value="ven. 21" />
+            <Picker.Item style={styles.item} label="17h30       -       Paul Lock  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="18h00       -       Kungs  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="18h30       -       Tom Santa  -  scène II " value="ven. 21" />
+            <Picker.Item style={styles.item} label="19h00       -       Ivan Giovanni  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="19h30       -       Kas:st  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="20h00       -       Dr Peacock  -  scène I " value="ven. 21" />
+            <Picker.Item style={styles.item} label="20h30       -       Nico Moreno  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="21h00       -       Byorn  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="21h30       -       Trinix  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="22h00       -       Lauwend  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="22h30       -       Vladimir Cauchemar  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="23h00       -       Mandragora  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="23h30       -       D-Frek  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="00h00       -       Vaent  -  scène I" value="ven. 21" />
+          </Picker>
+          <Picker style={styles.picker}>
+            <Picker.Item style={styles.titleItem} label="Dim.23" value="Dim.23" />
+            <Picker.Item style={styles.item} label="17h00       -       Myd  -  scène I " value="ven. 21" />
+            <Picker.Item style={styles.item} label="17h30       -       Paul Lock  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="18h00       -       Kungs  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="18h30       -       Tom Santa  -  scène II " value="ven. 21" />
+            <Picker.Item style={styles.item} label="19h00       -       Ivan Giovanni  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="19h30       -       Kas:st  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="20h00       -       Dr Peacock  -  scène I " value="ven. 21" />
+            <Picker.Item style={styles.item} label="20h30       -       Nico Moreno  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="21h00       -       Byorn  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="21h30       -       Trinix  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="22h00       -       Lauwend  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="22h30       -       Vladimir Cauchemar  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="23h00       -       Mandragora  -  scène I" value="ven. 21" />
+            <Picker.Item style={styles.item} label="23h30       -       D-Frek  -  scène II" value="ven. 21" />
+            <Picker.Item style={styles.item} label="00h00       -       Vaent  -  scène I" value="ven. 21" />
+          </Picker>
+        </View>
+
+        {/* <View style={styles.calendar}>
           <View style={styles.week}>
             {daysOfWeek.map((day, index) => (
               <Text key={index} style={styles.dayOfWeek}>{day}</Text>
@@ -43,10 +97,10 @@ const App = ({navigation}) => {
               ))}
             </View>
           ))}
-        </View>
+        </View> */}
 
       </View>
-      
+
       <View style={styles.billetterieContainer}>
         <Pressable onPress={() => navigation.navigate("Billetterie")}>  
           <Text style={styles.billetterieTitle}>Billetterie</Text>
@@ -55,41 +109,41 @@ const App = ({navigation}) => {
             Nous proposons de large service tel que les places de camping ou des activités. Prenez dès
             maintenant vos billets sur l'application.
           </Text>
-          <Image source={require('../../assets/fleche.png')} style={styles.fleche} />
+          <Image source={require('../../assets/fleche-rose.png')} style={styles.fleche} />
         </Pressable>
       </View>
 
       <View style={styles.artistsContainer}>
-        <View style={styles.artist}>
-        <Pressable onPress={() => navigation.navigate("Kungs")}>
-          <Image source={require('../../assets/kungs.jpg')} style={styles.artistImage} />
-        </Pressable>
-        <Text style={styles.artistText}>Kungs</Text>
-        </View>
-        <View style={styles.artist}>
-          <Pressable onPress={() => navigation.navigate("Lauwend")}>
-            <Image source={require('../../assets/lauwend.jpg')} style={styles.artistImage} />
-          </Pressable>
-          <Text style={styles.artistText}>Lauwend</Text>
-        </View>
-        <View style={styles.artist}>
-          <Pressable onPress={() => navigation.navigate("Biscuit")}>
-            <Image source={require('../../assets/bisuit.jpg')} style={styles.artistImage} />
-          </Pressable>
-          <Text style={styles.artistText}>Petit biscuit</Text>
-        </View>
-        <View style={styles.artist}>
-          <Pressable onPress={() => navigation.navigate("Myd")}>
-            <Image source={require('../../assets/Myd.jpg')} style={styles.artistImage} />
-          </Pressable>
-          <Text style={styles.artistText}>Myd</Text>
-        </View>
-        <View style={styles.artist}>
-          <Pressable onPress={() => navigation.navigate("Vaent")}>
-            <Image source={require('../../assets/vaent.png')} style={styles.artistImage} />
-          </Pressable>
-          <Text style={styles.artistText}>Vaent</Text>
-        </View>
+         <View style={styles.artist}>
+         <Pressable onPress={() => navigation.navigate("Kungs")}>
+           <Image source={require('../../assets/kungs.jpg')} style={styles.artistImage} />
+         </Pressable>
+         <Text style={styles.artistText}>Kungs</Text>
+         </View>
+         <View style={styles.artist}>
+           <Pressable onPress={() => navigation.navigate("Lauwend")}>
+             <Image source={require('../../assets/lauwend.jpg')} style={styles.artistImage} />
+           </Pressable>
+           <Text style={styles.artistText}>Lauwend</Text>
+         </View>
+         <View style={styles.artist}>
+           <Pressable onPress={() => navigation.navigate("Biscuit")}>
+             <Image source={require('../../assets/bisuit.jpg')} style={styles.artistImage} />
+           </Pressable>
+           <Text style={styles.artistText}>Petit biscuit</Text>
+         </View>
+         <View style={styles.artist}>
+           <Pressable onPress={() => navigation.navigate("Myd")}>
+             <Image source={require('../../assets/Myd.jpg')} style={styles.artistImage} />
+           </Pressable>
+           <Text style={styles.artistText}>Myd</Text>
+         </View>
+         <View style={styles.artist}>
+           <Pressable onPress={() => navigation.navigate("Vaent")}>
+             <Image source={require('../../assets/vaent.png')} style={styles.artistImage} />
+           </Pressable>
+           <Text style={styles.artistText}>Vaent</Text>
+         </View>
       </View>
     </ScrollView>
   );
@@ -100,127 +154,91 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#051118',
   },
-
-  // Logo
+  scrollContainer: {
+    paddingVertical: 20,
+    paddingHorizontal: 10,
+  },
   header: {
     alignItems: 'center',
-
+    justifyContent: 'center',
   },
   radioImage: {
-    width: "70%",
-    height: 160,
-    marginTop: 70,
+    width: 250,
+    height: 100,
     margin: 20,
   },
-
-  // Programme
   programmeContainer: {
-    paddingHorizontal: 20,
-    borderColor: "#00BFC3",
-    borderWidth: 2,
-    borderRadius: 20,
-    margin: 20,
-    padding: 10,
-  },
-  programmeTitle: {
-    color: '#00BFC3',
-    fontSize: 24,
-    // fontFamily: 'Nunito',
-    textAlign: 'center',
-    margin:10,
-  },
-  calendar: {
-    margin: 10,
-  },
-  week: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-   // fontFamily: 'Nunito',
-  },
-  dayOfWeek: {
-    color: '#ffffff',
-    fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    width: 40,
-    // fontFamily: 'Nunito',
-  },
-  date: {
-    color: '#ffffff',
-    fontSize: 16,
-    textAlign: 'center',
-    width: 40,
-    padding: 10,
-    // fontFamily: 'Nunito',
-  },
-  selectedDate: {
     backgroundColor: '#00BFC3',
     borderRadius: 20,
-  },
-  emptyDate: {
-    color: 'transparent',
-  },
-
-
-
-  // Billetterie
-  billetterieContainer: {
-    paddingHorizontal: 20,
-    borderColor: "#FF2273",
-    borderWidth: 2,
-    borderRadius: 20,
     margin: 20,
-    padding: 10,
+    padding: 20,
   },
-  billetterieTitle: {
-    color: '#FF2273',
+  programmeTitle: {
     fontSize: 24,
-    // fontFamily: 'Nunito',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop:10,
-    marginBottom:10,
-  },
-  billetterieText: {
+    fontWeight: 'bold',
     color: '#fff',
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  pickerContainer: {
+    backgroundColor: '#fff',
+    borderRadius: 10,
+    overflow: 'hidden',
+  },
+  picker: {
+    height: 50,
+    color: '#000',
+  },
+  titleItem: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  item: {
     fontSize: 16,
   },
-
-  fleche :{
-    alignSelf: "flex-end",
+  billetterieContainer: {
+    backgroundColor: '#FF2273',
+    borderRadius: 20,
     margin: 20,
-    padding: 10,
+    padding: 20,
+  },
+  billetterieTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
+  },
+  billetterieText: {
+    fontSize: 16,
+    color: '#fff',
+    marginVertical: 10,
+  },
+  fleche: {
+    alignSelf: 'center',
+    margin: 20,
     width: 30,
     height: 30,
-    transform: [{rotate: '180deg'}],
   },
-
-  // Artistes
   artistsContainer: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-around',
-    flexWrap : 'wrap',
     margin: 20,
-    padding: 10,
-
   },
   artist: {
     alignItems: 'center',
+    marginVertical: 10,
   },
   artistImage: {
-    width: 150,
-    height: 150,
-    borderRadius: 20,
-    marginBottom: 5,
-    borderColor: '#FFD33B',
-    borderWidth:2,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    marginBottom: 10,
   },
   artistText: {
-    color: '#FFD33B',
     fontSize: 16,
-    marginBottom:20,
-    // fontFamily : 'Nunito',
-  }
+    color: '#fff',
+  },
 });
 
 export default App;

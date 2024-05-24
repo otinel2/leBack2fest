@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, Button, Pressable } from 'react-native';
+import { Text, View, StyleSheet, Pressable, Platform } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 
 const Qrcode = () => {
@@ -13,7 +13,7 @@ const Qrcode = () => {
       setHasPermission(status === 'granted');
     })();
   }, []);
-// Alerte qrcode scanner
+
   const handleBarCodeScanned = ({ type, data }) => {
     setScanned(true);
     setData(data);
@@ -26,7 +26,7 @@ const Qrcode = () => {
   if (hasPermission === false) {
     return <Text>Accès à la caméra refusé</Text>;
   }
-// Aprés l'alerte 
+
   return (
     <View style={styles.container}>
       {!scanned ? (
@@ -39,8 +39,8 @@ const Qrcode = () => {
           <Text style={styles.text}>QR Code Scanné :</Text>
           <Text style={styles.dataText}>{data}</Text>
           <Pressable onPress={() => setScanned(false)}>
-            <Text  style={styles.bouton}>Scannez de nouveau !</Text>
-            </Pressable>
+            <Text style={styles.bouton}>Scannez de nouveau !</Text>
+          </Pressable>
         </View>
       )}
     </View>
@@ -60,18 +60,17 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   text: {
-    fontSize: 24,
+    fontSize: Platform.OS === 'ios' ? 22 : 24,
     marginBottom: 10,
-    color: '#ffff',
+    color: '#fff',
   },
   dataText: {
-    fontSize: 24,
+    fontSize: Platform.OS === 'ios' ? 22 : 24,
     marginBottom: 20,
-    color: '#ffff',
+    color: '#fff',
   },
-  bouton:{
-    fontSize: 24,
-    // fontFamily:'Nunito',
+  bouton: {
+    fontSize: Platform.OS === 'ios' ? 22 : 24,
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
@@ -79,7 +78,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     margin: 20,
     padding: 10,
-  }
+  },
 });
 
 export default Qrcode;

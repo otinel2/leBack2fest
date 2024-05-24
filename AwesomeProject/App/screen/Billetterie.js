@@ -1,5 +1,5 @@
 import React from 'react';
-import { SafeAreaView, ScrollView, View, Text, StyleSheet, Pressable, Image } from 'react-native';
+import { SafeAreaView, ScrollView, View, Text, StyleSheet, Pressable, Image, Platform } from 'react-native';
 
 const Billetterie = ({navigation}) => {
   const tickets = [
@@ -33,29 +33,24 @@ const Billetterie = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-
-  fleche :{
+  fleche: {
     alignSelf: "flex-start",
-    marginTop: 70,
+    marginTop: Platform.OS === 'android' ? 70 : 40, // Adjust margin top for Android and iOS
     margin: 20,
     padding: 10,
     width: 30,
     height: 30,
   },
-
   container: {
     flex: 1,
     backgroundColor: '#051118',
   },
-
   scrollContainer: {
     paddingVertical: 20,
     paddingHorizontal: 10,
   },
-
   header: {
     fontSize: 24,
-    // fontFamily:'Nunito',
     fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
@@ -63,7 +58,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     margin: 20,
     padding: 10,
-
   },
   ticket: {
     borderRadius: 20,
